@@ -20,11 +20,11 @@ fram = adafruit_fram.FRAM_SPI(spi_bus, spi_cs, write_protect=False, wp_pin=None,
 byteArrayRange = len(fram) # 8192 Bytes
 
 input_number = 999999999
-print("\n---> Input Number is {} <---".format(input_number), end="\n")
+print("\n---> Input Number is {} <---".format(input_number),end="\n")
 outputNumber = 0
 
 if((input_number < 0) or (input_number > 999999999)):
-    print("Input Number Must be Between 0 and 999999999...", end="\n")
+    print("Input Number Must be Between 0 and 999999999...",end="\n")
 else:
     write_position = 0
     while(input_number > 0):
@@ -33,7 +33,7 @@ else:
         fram[write_position] = substractor
         write_position += 1
 
-    print("---> SPI Write to fRAM Done <---", end="\n")
+    print("---> SPI Write to fRAM Done <---",end="\n")
 
     read_position = 0
     while(read_position < write_position):
@@ -41,9 +41,8 @@ else:
         outputNumber += adder * pow(256, read_position)
         read_position += 1
 
-    print("\n\"SPI fRAM\" Data \"Result\" is:", end="\n")
-    print("BIN: {}".format(bin(outputNumber)), end="\n")
-    #print("OCT: {}".format(oct(outputNumber)), end="\n")
-    print("DEC: {}".format(outputNumber), end="\n")
-    print("HEX: {}".format(hex(outputNumber)), end="\n")
-# END OF SCRIPT
+    print("\n\"SPI fRAM\" Data \"Result\" is:",end="\n")
+    print("BIN: {}".format(bin(outputNumber)),end="\n")
+    #print("OCT: {}".format(oct(outputNumber)),end="\n")
+    print("DEC: {}".format(outputNumber),end="\n")
+    print("HEX: {}".format(hex(outputNumber)),end="\n")
